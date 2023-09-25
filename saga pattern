@@ -1,0 +1,9 @@
+SAGA, SAGA Pattern ?
+---------------------
+- SAGA Pattern Nedir?
+- Transaction, Distributed Transaction, Compensable Transaction
+- Microservice Yapılarda Veritabanı Tasarımı — ACID Prensipleri
+- SAGA Nedir?
+- Choreograph Implemantasyonu — Event/Choreograph Implemantasyonu
+- Choreograph Yönetimi
+- Command/Orchestration Implemantasyon
