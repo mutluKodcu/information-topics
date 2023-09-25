@@ -196,8 +196,35 @@ Temel Git ve Github Bilgisi
 - REST (Respresentational State Transfer — Temsili Durum Aktarımı)
 - REST ve SOAP Arasındaki Farklar
 
+<b>Tasarım Şablonları</b>
+-----------------------
+1. Oluşturucu Tasarım Şablonları
+    - Teklik(Sigleton) Tasarım Şablonları
+    - Fabrika (Factory) Tasarım Şablonları
+    - Soyut Fabrika (Abstract Factory) Tasarım Şablonları
+    - Builder Tasarım Şablonları
+2. Yapısal Tasarım Şablonları
+    - Adaptör Tasarım Şablonları
+    - Vekil (Proxy) Tasarım Şablonları
+    - Köprü (Bridge) Tasarım Şablonları
+    - Cephe (Facade)Tasarım Şablonları
+    - Decarator Tasarım Şablonları
+    - Sinek Siklet (Fly Weight) Tasarım Şablonları
+3. Davranışsal Tasarım Şablonları
+    - Strateji (Strategy) Tasarım Şablonları
+    - Durum (State) Tasarım Şablonları
+    - Yineleyici (Iterator)Tasarım Şablonları
+    - Memento Tasarım Şablonları
+    - Gözlemci (Observer) Tasarım Şablonları
+    - Sorumluluk Zinciri (Chain of Responsibility) Tasarım Şablonları
+    - Ziyaretçi (Visitor) Tasarım Şablonları
+    - Şablon(Template) Tasarım Şablonları
+    - Komut (Command) Tasarım Şablonları
+    - Aracı (Mediator) Tasarım Şablonları
+
 
 <h1> Road Maps (#frontend )</h1>
+------------------------
 
 - FrontEnd Bileşenleri
 - JAVASCIPT ve String Metodlar
