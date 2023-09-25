@@ -1,0 +1,15 @@
+BackEnd Project RUN
+----------------
+mvn compile -X
+mvn clean compile package install
+mvn spring-boot:run 
+java -jar target/aabbcc-backend.jar
+mvn compile -X
+
+AABBCC-RUN ${project_loc:aabbcc-backend}
+
+clean compile -X package install spring-boot:run -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -DskipTests
+
+AABBCC-CleanInstall ${project_loc:aabbcc-backend}
+
+clean install compile package -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
