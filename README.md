@@ -7,7 +7,7 @@ It contains information libraries of technologies used in the software developme
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/backend%20run%20install"> BackEnd Projesinin Çalıştırılması</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/clean_architecture"> Clean Architecture</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/artifical_Intelligence"> Yapay Zeka (Artifical Intelligence)</a>
-- <a href=""> Algoritma Analizi</a>
+- <a href="https://github.com/mutluKodcu/information-topics/blob/main/algorithm_analysis"> Algoritma Analizi</a>
 
 
 <h1> Road Maps (#backend )</h1>
