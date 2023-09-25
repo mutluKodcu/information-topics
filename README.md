@@ -13,6 +13,23 @@ It contains information libraries of technologies used in the software developme
 - Problem çözme
 - Data Structers
 
+<b>Veri Yapıları Ve Algoritmalar</b> 
+--------------
+- Veri Modellleri
+- Veri Yapıları
+- Algoritma Tasarımında İlişkisel İfadeler
+- Arama Algoritması
+- Sıralama Algoritması
+- Bağlantılı Listeler
+- Kuyruk Yapıları
+- Yığın Yapıları
+- Ağaç Veri Modelleri
+- Graf Veri Modelleri
+- Durum Makinaları ve Biçimsel Diller
+- Rekürsif Algoritmalar
+- Dizinli Dosyalama Yapılaları
+- Veri Sıkıştırma Teknikleri
+
 <b> OOP </b> 
 -------------
 - Encapsulation
