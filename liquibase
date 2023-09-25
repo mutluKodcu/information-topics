@@ -1,0 +1,88 @@
+Liquibase.org
+- Veritabanı işlemlerini ve şema değişikliklerini yürütmek için kullanılan bir kütüphanedir.
+- Uygulama kodu ile veritabanı kodunu eşleştiriyor ve aynı seviyeye getiriyor.
+- Veritabanaları için versiyon kontrol sistemleridir. Gerektiği zaman istenilen versiyne dönüş yapılabilinir.
+
+ChangeSet
+- Veritabanında yapılacak en küçük değişiklik için tanımlanır.
+- Her bir changeset için id ve author olmak zorundadır.
+Böylece veritabaında hangi alanda kimin değişiklik yaptığı anlaşılabilinir.
+- 4 farklı yöntemle changeSet eklenebilinir. (SQL, XML, YAML ve JSON )
+
+<?xml version=”1.0" encoding=”UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation=”http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd"><changeSet id=”ABCDE-1 03.11.2022 09:49" author=”mutlukodcu” context=”sql”>
+<sql>
+CREATE TABLE deneme(
+id bigserial NOT NULL ,
+aciklama varchar(1000) ,
+bas_tarih date not null,
+bit_tarih date not null,
+durum varchar(256) not null default ‘YENI’,
+fiziksel_dosya_id bigint,
+iptal_aciklama varchar(1000) ,
+deleted boolean default false,
+version smallint NOT NULL DEFAULT 0,
+created_by varchar(64),
+created_date timestamp NOT NULL DEFAULT now(),
+last_modified_by varchar(64),
+last_modified_date timestamp,
+CONSTRAINT pk_deneme PRIMARY KEY (id)
+);
+</sql>
+</changeSet>
+</databaseChangeLog>
+
+ChangeLogs: Veritabanı değişikliklerini sıralı bir şekilde listelemek için kullanılır.
+ChangeLog’ların listesini içerir. (db.changelog-master.xml)
+
+<?xml version=”1.0" encoding=”UTF-8"?>
+<databaseChangeLog xmlns=”http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation=”http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+<include file=”db/changelog/data/A-1.xml”/>
+<include file=”db/changelog/data/B_2.xml”/>
+</databaseChangeLog>
+
+- SQL’ler xml formatında kullanılabilinir.
+
+resources/db.changelog/A-1.xml eklenir.
+
+Daha sonra application.properties // profil dosyası içersine:
+
+spring.liquibase.enabled=true
+
+yapmamamız gerekir. Ayrıca resources/application.properties içerisine
+
+url=jdbc:postgresql://localhost:5432/postgres
+username=postgres
+password=postgres
+changeLogFile=db/changelog/db.changelog-master.xml
+outputChangeLogFile=db/changelog/diff/liquibase-outputChangeLog.xml
+
+çalıştığında veritabanına değişiklikler yansıması beklenir.
+
+PreConditions: Changeset ve changeLog’lara uygulanabilir.
+
+Contexts: ChangeSet’lere uygulanır. changeLog’ların farklı ortamlara uygulanıp/uygulanmadığını kontrol etmek için kullanılır.
+Bazı changesetler production yada test ortamı olarak belirlenebilinir.
+
+<changeSet id=”2" author=”bob” contextFilter=”test”>
+<insert tableName=”news”>
+<column name=”id” value=”1"/>
+<column name=”title” value=”Liquibase 0.8 Released”/>
+</insert>
+</changeSet>
+
+// test ortamında calismasi isteniliyor. eğer istenilmiyorsa contextFilter=”!test” yapılarak test ortamı hariç çalıştırılsın diyebiliriz.
+
+application.properties // profil dosyası içersinde:
+
+`spring.liquibase.context=prod`
+
+Not: ChangeLogs isimlendirmesini ilgili branches adına gore isimlendirilebilir. Böylece issue(A-1, B-2) takibi kolay olur.
+
+Örn: db/changelog/modul1_v0.0.1 içerisine — A-1.xml -B-2.xml şeklinde eklenebilinir.
