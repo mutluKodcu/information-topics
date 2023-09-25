@@ -76,7 +76,6 @@ Temel Git ve Github Bilgisi
 - MapStruct
 - Lombok
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/liquibase"><b> Liquibase </b></a>
----------------------------------
      * Liquibase Özellikleri
      * Geliştirici için Süreçler
      * PreCondition Çeşitleri — Contexts
