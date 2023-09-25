@@ -1,0 +1,105 @@
+- Liste Dizi işlemek için işlevsel işlemler sağlar.
+- Stream bir interface olduğundan dolayı doğrudan nesne almaz.
+
+* stream() ya da parallelStream() metodlarını çağırılarak Stream nesnesi döndürülür.
+* int , double ve long için IntStream , DoubleStream ve LongStream şeklinde kullanılır.
+
+stream() tek bir iş parçacığı kullanan paralel olmayan stream.
+- sıralı bir stream olarak değerlendirilir.
+- Sıralı stream işlemi tek tek gerçekleştirir.
+
+Java Collections
+----------------
+Bir veri üzerinde yapılan arama, sıralama, ekleme, değiştirme ve silme gibi tüm işlemleri gerçekleştirilir.
+
+Stream Api İşlemleri
+- **filter()** : Filtreleme işlemi yapmamızı sağlar, verilen kriterlere göre arama yapar.
+
+List<String> name = Arrays.asList(“KIRMIZI”, “BEYAZ”, “YEŞİL”);
+List result = name.stream().filter(s -> s.startsWith(“Y”)).collect(Collectors.toList());
+System.out.println(result); // YEŞİL
+
+
+— startsWith baş harfine göre arama yapar.
+— contains kelime içerisinde ki harfe göre arama yapar,
+
+
+List<String> name = Arrays.asList(“KIRMIZI”, “BEYAZ”, “YEŞİL”);
+List result = name.stream().filter(s -> (s.contains(“Y”)) && (s.contains(“A”))).collect(Collectors.toList());
+System.out.println(result); // BEYAZ
+
+
+sorted(): Sıralama yapmayı sağlar.
+Yazı ise harf sırası ( sözlük mantığı şeklinde ) sayı ise küçükten büyüğe.
+
+
+List<String> name = Arrays.asList(“KIRMIZI”, “BEYAZ”, “YEŞİL”);
+List<String> test = name.stream().sorted().collect(Collectors.toList());
+System.out.println(test); // BEYAZ , KIRMIZI, YEŞİL
+
+List<String> number = Arrays.asList(“5”, “2”, “1”, “3”);
+List<String> test = number.stream().sorted().collect(Collectors.toList());
+System.out.println(test); // [1, 2, 3, 5]
+
+
+- reduce()
+Yapılan işlemi teker teker basamaklarını göstererek işlemi yapar.
+
+
+List<Integer> number = Arrays.asList(5, 3, 2, 8);
+int newNumber = number.stream().reduce(0, (i, i1) -> {
+System.out.println(i + i1);
+return i + i1;
+});
+
+
+- map()
+Stream içerisinde ki elemanları başka tiplere dönüştürmek
+veya üzerlerinde işlem yapmak için Map kullanılmaktadır.
+
+
+List<String> name = Arrays.asList(“KIRMIZI”, “BEYAZ”,);
+name.stream().map(s -> “Map Eklentisi “ + s + “ Map Eklentisi”).forEach(System.out::println);
+
+// Map Eklentisi KIRMIZI Map Eklentisi
+// Map Eklentisi BEYAZ Map Eklentisi
+
+- distinct()
+Listede aynı değere sahip olanları tek bir değere indirger.
+
+List<String> names= new ArrayList<String>();
+names.add(“KIRMIZI”);
+names.add(“BEYAZ”);
+names.add(“BEYAZ”);
+names.add(“BEYAZ”);
+names.add(“BEYAZ”);
+names.stream().distinct().forEach(System.out::println);
+
+
+Çıktı:
+KIRMIZI
+BEYAZ
+
+List<Integer> sayi = new ArrayList<>();
+sayi.add(5);
+sayi.add(7);
+sayi.add(7);
+sayi.add(5);
+sayi.add(1);
+sayi.stream().distinct().forEach(System.out::println);
+
+Çıktı:
+5
+7
+1
+
+count()
+Toplam veri sayısını gösterir. Range ile 18 ve 25 aralığını seçip , count ile bu aralığı gösterildi.
+
+
+long x = IntStream.range(18, 25).count();
+System.out.println(x);
+
+
+Çıktı:
+7
