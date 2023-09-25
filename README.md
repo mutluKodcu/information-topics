@@ -53,7 +53,16 @@ It contains information libraries of technologies used in the software developme
 - Spring REST Mimarisi
 - Transaction Management
 
-<b><a heref="https://github.com/mutluKodcu/information-topics/blob/main/saga%20pattern">SAGA, SAGA Pattern ?</a></b>
+<b><a href="">KAFKA Terminolojisi ve Mimarisi</a></b>
+---------------------
+- KAFKA nedir?
+- Broker — Message Key — Consumer
+- Topic — Partition — Consumer Group
+- Consumer Group — Consumer Offset
+- Zookeper ve Rolleri
+- Controller Seçimi, Topic Konfigürasyonlar, Kotalar
+
+<b><a href="https://github.com/mutluKodcu/information-topics/blob/main/saga%20pattern">SAGA, SAGA Pattern ?</a></b>
 ---------------------
 - SAGA Pattern Nedir?
 - Transaction, Distributed Transaction, Compensable Transaction
