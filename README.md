@@ -170,6 +170,12 @@ Temel Git ve Github Bilgisi
 - Consumer Group — Consumer Offset
 - Zookeper ve Rolleri
 - Controller Seçimi, Topic Konfigürasyonlar, Kotalar
+- <b>RabbitMQ / Mesaj Yönetimi </b>
+------------------------------------------
+    - RabbitMQ nedir? Çalışma Şekli..
+    - RabbitMQ ve Bileşenleri
+    - Mail Microservice
+    - Mail service — Mail Atma işlemi nasıl gerçekleşir?
 
 <b><a href="https://github.com/mutluKodcu/information-topics/blob/main/saga%20pattern">SAGA, SAGA Pattern ?</a></b>
 ---------------------
