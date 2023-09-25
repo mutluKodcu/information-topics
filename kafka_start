@@ -1,0 +1,22 @@
+Mikroservisler arası mesajlaşma yöntemi KAFKA
+--------------------------------------------------
+Request /Response Mesajlaşma
+
+2. Point to Point Messaging (Noktadan Noktaya Mesajlaşma)
+
+Alıcının belli olduğu mesajlaşmadır.
+
+mesaj oluşturulurken alıcının adresine oluşturur ve alıcının adresine gönderilir. Alıcı daha sonra geri bildirimde bulunur. (Aldım yada almadım şeklinde) Mesaj kuyruğa eklenir ve kuyruktan okunduktan sonra da silinir. 
+O mesaja bir daha geri dönülmez.
+
+3. Pub /Sub Messaging (Yayılma ve Abone Ol Mesajlaşma Pattern’i)
+
+Mesaj gönderen kişi mesajı topic’e yazar. Mesajı kimlerin okuyacağını bilmez. Sadece Topic’i yani yazılması gereken yeri bilir. Topic’i dinleyen dinleyicilerde gönderilen mesajlara ulaşır.
+Mesaj topic’e geldikçe mesajlar tüm dinleyicilere gönderilir. 
+Topic’i dinleyen dinleyicilerde önceden gönderilen mesajları alamaz, o anda var olan mesajları okur.
+
+??? Servis yapılarını senkron mesajlaşma yapısından çıkarıp (Response — Request) asenkron mesajlaşma(Pub/Sub message) yapısına dönüştürebiliriz.
+
+i. Servislerden mesajlar gelir.
+
+ii. Sunucu bu mesajları sırası geldiğinde kuyruğundan alır ve işler. Bu şekilde sunucu tıkanmaz. Böylece real-time yakın veri sunulması sağlanır(Monitoring — izleme zamanı). Bileşenlerin böylece asenkron konuşulması sağlanır.
