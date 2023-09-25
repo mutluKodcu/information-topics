@@ -1,0 +1,15 @@
+Sistem Kurulumları için:
+------------------------
+Sistem Kurulumu1-)JAVA : JDK indirilip yüklendikten sonra Enviroment değişkenlerine eklenir.
+
+Windows için :JAVA_HOME C:\Program Files\Java\jdk1.8.0_14
+    MAVEN : https://maven.apache.org/download.cgi adresindenapache-maven-3.6.1-bin.zip hali indirilerek herhangi bir klasöre açılır.
+  C dizinine atarsak eğer:
+     M2_HOME C:\apache-maven-3.6.12-) 
+Ortam değişkenlerine maven ve java path e tanımlanıyor.
+
+Path variable: 
+     %JAVA_HOME%\bin; 
+     %M2_HOME%\bin
+     
+MAVEN_OPTS-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
