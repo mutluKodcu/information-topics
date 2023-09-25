@@ -87,7 +87,10 @@ Temel Git ve Github Bilgisi
 -----------------
 - Redis
 - Docker
-- Kebernetes
+- <b> Kubernetes </b>
+    * Container Cluster Nedir? — Kubernetes Node Yapısı
+    * Master Node Yapısı — Kubernetes Çalışma Şekli
+    * Pod, ReplicaSet, Namespace, Service — K8S Yapısı
 
 <b> Web Service </b> 
 -------------
