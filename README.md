@@ -83,6 +83,12 @@ Temel Git ve Github Bilgisi
      * Hibernate Bağlantısı — Liquibase Operasyonları
      * Roll-Back — Diff
 
+<b> DevOps </b>
+-----------------
+- Redis
+- Docker
+- Kebernetes
+
 <b> Web Service </b> 
 -------------
 - Rest
