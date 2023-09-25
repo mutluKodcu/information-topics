@@ -1,0 +1,94 @@
+### Git Bash Komutları
+// proje icin file olusturulur.
+
+**cd gitRepoFile/**
+
+// proje git uzerinde ise clone edilir.
+
+**git clone ssh://ddddd@abbccdef.com/path/to/aabbcc-frontend-ms.git**
+
+// gitRepoFile file altindaki proje dizinine gidilir.
+
+**git cd gitRepoFile/aabbcc-frontend-ms**
+
+// mevcut calismalar varsa ilgili repo'dan(dev/test/master/feature) cekilir
+
+**git pull origin dev**
+
+// ilgili proje dizini altina yeni bir branch olusturulur.
+
+**git checkout -b "feature/dmtbkts/new-file-list"**
+
+// durum kontrol edilir
+
+**git status**
+
+// ornek yeni dosya eklendi ise deneme.txt abc/ dizini altina
+
+**git add gitRepoFile/aabbcc-frontend-ms/abc/deneme.txt**
+
+yada yapılan tum deigisiklikleri ekemek icin
+
+**git add --all**
+
+// yapilan is hakkinda bilgi eklenir
+
+**git commit -m "yeni bir deneme.txt dosyasi eklendi"**
+
+// proje repo'ya olsuturulan branch'a gonderilir
+
+git push origin "feature/dmtbkts/new-file-list"
+
+### GIT BASH
+
+git init projede git’i başlatır.
+
+`git status` mevcut yeni yaratılmış ya da üzerinde değişiklik yapılmış dosyaları ve stash dosyaları gösterir.
+
+`git status -s `daha kısa bir gösterim sağlar.
+
+`git add defter.txt defter.txt` dosyasını commit’lenmek üzere staged ortamına ekler.
+
+`git add -A .` tüm untracked ve unstaged dosyaları commit’lenmek üzere staged ortamına ekler.
+
+`git reset nevcan.txt nevcan.txt `dosyasının durumunu staged yerine untracked olacak şekilde geri alır.
+
+`git commit -m "commit mesajınız"` staging area’daki dosyaları mesajınızla beraber commit’ler.
+
+`git log commit` geçmişinizi görüntüler.
+
+`git log --oneline` commit geçmişlerini birer satırda görüntüler.
+
+`git log --summary` commit geçmişlerini detaylı olarak görüntüler.
+
+`git remote add origin http://{{path}}.git` remote repository eklenir.
+
+`git push -u origin master` commit’leri remote repository’ye gönderir.
+
+`git pull origin master remote` repository’deki güncel datayı local repository’mize çeker.
+
+`git diff --staged` sadece workspace ve staged area arasındaki farkları gösterir.
+
+`git diff HEAD workspace` ve HEAD arasındaki farkları gösterir.
+
+`git checkout -- defter.txt` HEAD’daki dosyayı workspace’inizdeki dosyanın üzerine yazar.
+
+`git rm defter.txt` dosyayı deleted statüsüne taşır ve local’den siler.
+
+`git rm -r dizin-ism`i dizini deleted statüsüne taşır ve local’den siler.
+
+`git branch yeni_branch_ismi `yeni bir branch oluşturur.
+
+`git checkout yeni_branch_ismi` HEAD’i hangi branch’a taşıyacağını belirler.
+
+git checkout -b yeni_branch_ismi yeni bir branch oluşturur ve HEAD’i taşır.
+
+`git branch -d yeni_branch_ismi` branch’ı siler.
+
+git branch tüm branch’ları listeler ve “ * ” ile HEAD’in hangi branch’da olduğunu gösterir.
+
+`git stash pull` işleminden önce çalışmaları saklamak için kullanılır.
+
+`git stash apply pull` işleminden sonra çalışmaları geri almak için kullanılır.
+
+`git merge branch_ismi “branch_ismi”` isimli branch’ı “master branch” ile birleştirir.
