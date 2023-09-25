@@ -53,3 +53,12 @@ It contains information libraries of technologies used in the software developme
 - Spring REST Mimarisi
 - Transaction Management
 
+<b> SAGA, SAGA Pattern ?</b>
+---------------------
+- SAGA Pattern Nedir?
+- Transaction, Distributed Transaction, Compensable Transaction
+- Microservice Yapılarda Veritabanı Tasarımı — ACID Prensipleri
+- SAGA Nedir?
+- Choreograph Implemantasyonu — Event/Choreograph Implemantasyonu
+- Choreograph Yönetimi
+- Command/Orchestration Implemantasyon
