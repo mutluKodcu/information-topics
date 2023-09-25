@@ -1,0 +1,24 @@
+FRONTEND Ortam Kurulumu
+#mutluKodcu# :)*.*(:
+#mutluKodcu# :)*.*(:
+
+Nov 6, 2022
+
+
+
+
+• Visual Studio code’da çalışacaksanız uygulamanın kurulumu yapılır.
+• Node.js kurulur
+• “ornek-frontend-ms” projesi Git’ten alınır.
+
+Aşağıdaki komutlar terminalde çalıştırılır:
+- npm set strict-ssl false
+- npm cache clean –force
+- npm install — global yarn
+- npm install
+
+çalışmıyorsa command promt açılır.
+- yarn install
+
+Uygulamayı çalıştırmak için
+- yarn start
