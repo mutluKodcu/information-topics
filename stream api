@@ -13,7 +13,7 @@ Java Collections
 Bir veri üzerinde yapılan arama, sıralama, ekleme, değiştirme ve silme gibi tüm işlemleri gerçekleştirilir.
 
 Stream Api İşlemleri
-- **filter()** : Filtreleme işlemi yapmamızı sağlar, verilen kriterlere göre arama yapar.
+- filter() : Filtreleme işlemi yapmamızı sağlar, verilen kriterlere göre arama yapar.
 
 List<String> name = Arrays.asList(“KIRMIZI”, “BEYAZ”, “YEŞİL”);
 List result = name.stream().filter(s -> s.startsWith(“Y”)).collect(Collectors.toList());
