@@ -1,0 +1,317 @@
+Scheduling, belirli bir zaman dilimi için taskları(görev-işlem) yürütme işlemidir. TimerTask, ScheduledExecuterService ya da Spring’in sağladığı @ Schedule anotasyonu ile sağlanabilir.
+TimerImplementation timertask1=new TimerImplementation();
+Timer timer=new Timer();
+timer.scheduleAtFixedRate(timertask1, 0, 1000);
+
+ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
+execService.scheduleAtFixedRate( () -> {
+System.out.println(“Her 1 saniyede çalışacak kod parçası);
+}, 0, 1000L, TimeUnit.MILLISECONDS);
+
+@ Scheduled Anotasyonu
+Periyodik olarak yapmak istediğimiz metodun başına @ Scheduled anotasyonunu eklememiz yeterli olur.
+@Override
+
+fixedDelay : Sabit gecikme süresi ile, taskımız bir önceki taskın bitiminden sonra belirlediğimiz süre kadar bekler.
+Yani ‘fixedDelay=5000’ dediğimizde önceki taskın bitiminden 5 saniye sonra yeni task başlar.
+Tasklar arasında 5 saniye olduğundan emin oluruz.
+
+fixedRate: Sabit belirlenen süre ile, taskın gerçekleşeceği zaman bir önceki taskın başladığı zamandan hesaplanır.
+Yani ‘fixedRate=5000’ dediğimizde önceki task başladıktan sonra 5 saniye içerisinde bu task gerçekleşecek demektir.
+
+cron: Aynı Linux’da bulunan cron yapısını burada da kullanabiliriz.
+Basit bir cron expression ile işlemlerimizi istediğimiz belli bir periyoda zamanlayabiliriz.
+
+@EnableScheduling
+public class ScheduledTasks {
+@Scheduled(fixedRate = 5000)
+public void task1() {
+System.out.println(Thread.currentThread().getName()+” Task 1 executed at “+ new Date());
+}
+@Scheduled(fixedRate = 1000)
+public void task2() {
+System.out.println(Thread.currentThread().getName()+” Task 2 executed at “+ new Date());
+}
+}
+
+second(saniye), minute(dakika), hour(saat), day of month(ayın günü),
+month(ay), day(s) of week(haftanın hangi günleri çalışacak)
+
+Örnek cron ifadeleri aşağıda yer almakta.
+
+“0 0 * * * *” -> Günün her saati
+“*/5 * * * * *” -> Her 5 saniyede
+“0 0 9–11 * * *” -> Her gün 9, 10and 11 saatlerinde çalışır
+“0 0 9,10 * * *” -> Her gün 9 ve 10 saatlerinde çalışır
+“0 0 9–11 * * SUN-FRI” -> Pazardan cumaya kadar 9 ile 11 saatleri arasında çalışır
+
+* “0 0 * * * *” = the top of every hour of every day.
+* “*/10 * * * * *” = every ten seconds.
+* “0 0 8–10 * * *” = 8, 9 and 10 o’clock of every day.
+* “0 0 8,10 * * *” = 8 and 10 o’clock of every day.
+* “0 0/30 8–10 * * *” = 8:00, 8:30, 9:00, 9:30 and 10 o’clock every day.
+* “0 0 9–17 * * MON-FRI” = on the hour nine-to-five weekdays
+* “0 0 0 25 12 ?” = every Christmas Day at midnight
+
+Metodunuzu açıklama ile kullanabilirsiniz @Scheduled(cron =”0 1 1 * * ?”).
+
+0 — saniye içindir
+
+1–1 dakika
+
+1 — günün saati.
+
+Örnek cron ile zamanlanmış bir task
+
+@Scheduled(cron=”*/5 * * * * *”, zone=”Europe/Istanbul”)
+public void task3() {
+System.out.println(Thread.currentThread().getName()+” Task 3 executed at “+ new Date());
+}
+
+* * * * * *
+| | | | | |
+saniye dakk saat ayın günü ay haftanın günü
+(0–59) (0–59) (0–23) (1–31) (1–12) (0–7)
+*,- / *,- / *,- / *,-?/LWC *,-?/ *,-?/L C #
+
+1. 6 Asterisks (* * * * * *)
+Saniye, Dakika, Saat, Ayın Günü, Ay, Haftanın Günü olarak atanabilir.
+
+2) Bir Cron İfadesi aşağıdaki sembolleri kabul edebilir:
+* — , / ? L W #
+
+3) Virgül, virgülle ayrılmış olası değerleri belirtir.
+Örneğin, “0 0 4,14 * * *” ifadesi ‘her gün 4:00:00AM ve 14:00:00’ anlamına gelir.
+
+4) Kısa çizgi (-) bir aralığı belirtir, yani aralık arasındaki olası tüm değerlerin dikkate alınması anlamına gelir.
+Sayı aralıkları, tire ile ayrılmış iki sayı ile ifade edilir. Belirtilen aralık kapsayıcıdır.
+
+Örneğin, ”0 0 2–4 * * *” ifadesi sadece ‘verilen görevi her gün 2:00:00AM, 3:00:00AM ve 4:00:00AM’da yürütün’ anlamına gelir.
+
+5) Yıldız işareti(*) herhangi bir/her/tüm değeri belirtir
+Örneğin, “0 0 * * * *” ifadesi ‘her günün her saatinin zirvesi’ veya basit bir ifadeyle ‘saatlik’ anlamına gelir.
+
+6) Eğik çizgi(/) bir süreyi belirtir
+Örneğin, “0 0/30 2–4 * * *” ifadesi ‘her gün 2:00, 2:30, 3:00, 3:30, 4:00 ve 4:30’ anlamına gelir.
+
+7) Soru işareti(?) * gibi herhangi bir değeri belirtir, ancak yıldız işareti
+yerine ‘ayın günü’ veya ‘haftanın günü’ alanları için kullanılabilir.
+
+8) Ay ve haftanın günü alanları için İngilizce isimler de kullanılabilir.
+Haftanın veya ayın belirli bir gününün ilk üç harfini kullanın (büyük/küçük harf farketmez).
+Örneğin, 11 = KASIM ve 5 = CUM
+
+9) L : ‘ayın günü’ ve ‘haftanın günü’ alanları, ‘son’ anlamına gelen ve her alanda farklı bir anlama gelen ‘L’ karakteri içerebilir. ‘Ayın günü’ alanında L, ‘ayın son günü’ anlamına gelir.
+Örneğin, L-3 = ayın sondan üçüncü gününe.
+Ardından W ie ‘LW’ gelirse, ‘ayın hafta içi son günü’ anlamına gelir.
+
+10) W : ‘W’ karakteri yalnızca ‘ayın günü’ için geçerlidir.
+‘Ayın günü’ alanı ‘nW’ olabilir, bu da ‘n ayının gününe en yakın hafta içi günü’ anlamına gelir.
+
+n Cumartesi gününe denk gelirse, bu Cuma gününü döndürür. Öte yandan, n Pazar günü düşerse, bu Pazartesi’yi döndürür.
+
+11) # : ‘#’ karakteri yalnızca ‘haftanın günü’ için geçerlidir.
+“Haftanın günü” alanı “d#n” veya “DDD#n” olabilir,
+bu “haftanın n. günü d veya aydaki DDD” anlamına gelir.
+Örneğin, 5#3 = ayın üçüncü Cuma günü. ÇAR#1 = ayın ilk Çarşambası.
+
+12) C : ‘C’ karakteri “takvim” kısaltmasıdır ve sadece ayın günü ve haftanın günü alanlarında kullanılabilir
+
+0 = Pazar
+1 = Pazartesi
+2 = Salı
+3 = Çarşamba
+4 = Perşembe
+5 = Cuma
+6 = Cumartesi
+7 = Pazar
+
+1) For Once a Year: @yearly or @annually in place of “0 0 0 1 1 *”
+
+2) For Once a Month: @monthly in place of “0 0 0 1 * *”
+
+3) For Once a Week: @weekly in place of “0 0 0 * * 0”
+
+4) For Once a Day: @daily or @midnight in place of “0 0 0 * * *”
+
+5) For Once an Hour: @hourly in place of “0 0 * * * *”
+
+Son Günler (L):
+‘L’ karakteri son anlamına gelir. Bu karakteri ‘ayın günü’ ve ‘haftanın günü’ alanlarında kullanabilinir.
+
+Cron İfadesi Anlam
+0 0 0 L * * Ayın son günü gece yarısı
+
+0 0 0 L-2 * * Ayın sondan ikinci günü gece yarısı
+
+0 0 0 * * 4L Ayın son Perşembe gece yarısı
+
+hafta içi (K)
+‘W’ karakteri Hafta içi anlamına gelir. Bu karakteri ‘ayın günü’ alanında kullanabiliriz
+Cron İfadesi Anlam
+0 0 0 1W * * Ayın ilk iş günü gece yarısı
+
+0 0 0 LW * * Ayın son hafta içi gece yarısı
+
+Spring Çizelgesi Cron İfadesi
+
+Cron İfadeleri, çizelgelemeye ulaşmak için en yaygın kullanılan yaklaşımdır. Cron İfadeleri, programlama için Unix/Linux işletim sisteminde çok popülerdir. Spring Framework, görevi zamanlamak için Cron ifadesini kullanabileceğimiz bir API sunar. ‘Spring Çizelgesi Cron İfadesi’ hakkındaki bu makale, Spring 5.3'teki Cron İfadelerindeki tüm yeni geliştirmeleri içerir.
+
+Bununla birlikte, Spring/Spring Boot kullanarak görevimizin planlanması için başka yaklaşımlar da vardır, ancak bu yazıda yalnızca Cron ifadelerine odaklanacağız. Ek olarak, Spring 5.3'te geliştirilmiş Cron İfadelerinden de bahsedeceğiz. Çizelgeleme temelleri de dahil olmak üzere diğer yaklaşımlardan zaten bahsettiğimiz Spring Boot Çizelgeleme hakkında ayrı bir ayrıntılı makale var . ‘Spring Çizelgesi Cron İfadesi’ konumuzu ve ilgili kavramlarını tartışalım.
+
+Cron İfadesi nedir?
+======================
+Cron, belirli aralıklarla otomatik olarak yürütülmesi için bir görevi planlamak için kullanılan tipik bir Unix yardımcı programıdır. Örneğin, Uygulamalarda belirli bir pdf raporu oluşturan bir görev olabilir ve bu raporu haftalık olarak Pazartesi günü sabah 9:00'da otomatik olarak oluşturmak istenilebilinir.
+Bir cron ifadesi, programın ayrı ayrı ayrıntılarını açıklayan altı veya yedi alt ifadeden (alanlardan) oluşan bir dizedir. Boşlukla ayrılmış bu alanlar, izin verilen değerlerden herhangi birini o alan için izin verilen karakterlerin çeşitli kombinasyonlarıyla içerebilir.
+
+Not : Spring Framework belgelerine göre, ‘haftanın günü’ alanı için izin verilen değerler 0–7'dir.
+Burada ‘0’ veya ‘7’ her ikisi de ‘Pazar’ı temsil eder. Bu nedenle, aşağıdaki listeler,
+günlerin sayılarla net bir şekilde eşlenmesini göstermektedir.
+
+Spring Çizelgesi Cron İfadesi0 = Pazar
+1 = Pazartesi
+2 = Salı
+3 = Çarşamba
+4 = Perşembe
+5 = Cuma
+6 = Cumartesi
+7 = Pazar
+
+Not: Önceki sürümler ve en son Spring 6.0, cron ifadesinde altı alanı destekler : saniye, dakika, saat, ayın günü, ay ve haftanın günü.
+Spring Framework tarafından sağlanan CronExpression sınıfının parse() yöntemi, alanların uzunluğu 6'ya eşit değilse,
+IllegalArgumentException ile karşılaşılır.
+
+Cron İfadesi Nasıl Yazılır?
+===========================
+
+Yukarıdaki resimde görüldüğü gibi cron ifadesinde varsayılan olarak yer tutucu olarak 6 adet Yıldız (* * * * * *) vardır. Ayrıca, her yıldız işareti bir değeri temsil eder. Bu değerler sırasıyla Saniye, Dakika, Saat, Ayın Günü, Ay, Haftanın Günü olarak atanabilir. Uygun yerde izin verilen değerler de yukarıdaki resimde verilmiştir.
+Bir Cron İfadesi aşağıdaki sembolleri kabul edebilir: * — , / ? L W #
+Virgül, virgülle ayrılmış olası değerleri belirtir.
+Örneğin, “0 0 4,14 * * *” ifadesi ‘her gün 4:00:00AM ve 14:00:00’ anlamına gelir.
+Kısa çizgi (-) bir aralığı belirtir, yani aralık arasındaki olası tüm değerlerin dikkate alınması anlamına gelir.
+Sayı aralıkları, tire ile ayrılmış iki sayı ile ifade edilir. Belirtilen aralık kapsayıcıdır. Örneğin, ”0 0 2–4 * * *” ifadesi sadece ‘verilen görevi her gün 2:00:00AM, 3:00:00AM ve 4:00:00AM’da yürütün’ anlamına gelir.
+Yıldız işareti(*) herhangi bir/her/tüm değeri belirtir. Örneğin, “0 0 * * * *” ifadesi ‘her günün her saatinin zirvesi’ veya basit bir ifadeyle ‘saatlik’ anlamına gelir.
+Eğik çizgi(/) bir süreyi belirtir. Örneğin, “0 0/30 2–4 * * *” ifadesi ‘her gün 2:00, 2:30, 3:00, 3:30, 4:00 ve 4:30’ anlamına gelir.
+Soru işareti(?) * gibi herhangi bir değeri belirtir, a
+ncak yıldız işareti yerine ‘ayın günü’ veya ‘haftanın günü’ alanları için kullanılabilir.
+Ay ve haftanın günü alanları için İngilizce isimler de kullanılabilir.
+Haftanın veya ayın belirli bir gününün ilk üç harfini kullanın (büyük/küçük harf farketmez). Bir Spring Çizelgesi Cron İfadesi yazarken, sayılar yerine ‘haftanın günü’ ve ‘aylar’ için İngilizce adların kullanılması tavsiye edilir, çünkü bunlar açıklayıcıdır ve aynı zamanda hata yapma olasılığını da ortadan kaldırır. Örneğin, 11 = KASIM ve 5 = CUM
+L : ‘ayın günü’ ve ‘haftanın günü’ alanları, ‘son’ anlamına gelen ve her alanda farklı bir anlama gelen ‘L’ karakteri içerebilir.
+‘Ayın günü’ alanında L, ‘ayın son günü’ anlamına gelir.
+Ardından negatif bir ofset geliyorsa, yani ‘L-n’, ‘ayın n’den son gününe’ anlamına gelir. Örneğin, L-3 = ayın sondan üçüncü gününe.
+Ardından W ie ‘LW’ gelirse, ‘ayın hafta içi son günü’ anlamına gelir. “Haftanın günü” alanındaki L, “haftanın son günü” anlamına gelir.
+Önüne bir sayı veya üç harfli bir ad eklenirse, örneğin ‘nL’ veya ‘DDDL’,
+sırasıyla “haftanın son günü ’n’ veya ayın ‘DDD’’ anlamına gelir. Örneğin, 5 L = ayın son Cuma günü. TUEL = ayın son Salı günü.
+W : ‘W’ karakteri yalnızca ‘ayın günü’ için geçerlidir. ‘Ayın günü’ alanı ‘nW’ olabilir, bu da ‘n ayının gününe en yakın hafta içi günü’ anlamına gelir. Örneğin, ‘1W’, ‘ayın hafta içi ilk günü’ anlamına gelir. ‘4W’, ‘ayın dördüncü hafta içi günü’ anlamına gelir. ‘LW’, ‘ayın hafta içi son günü’ anlamına gelir. n Cumartesi gününe denk gelirse, bu Cuma gününü döndürür. Öte yandan, n Pazar günü düşerse, bu Pazartesi’yi döndürür.
+# : ‘#’ karakteri yalnızca ‘haftanın günü’ için geçerlidir. “Haftanın günü” alanı “d#n” veya “DDD#n” olabilir, bu “haftanın n. günü d veya aydaki DDD” anlamına gelir. Örneğin, 5#3 = ayın üçüncü Cuma günü. ÇAR#1 = ayın ilk Çarşambası.
+C : ‘C’ karakteri “takvim” kısaltmasıdır ve sadece ayın günü ve haftanın günü alanlarında kullanılabilir. Bu, değerlerin varsa ilgili takvime göre hesaplandığı anlamına gelir. Hiçbir takvim ilişkilendirilmemişse,
+her şey dahil bir takvime sahip olmakla eşdeğerdir. Örneğin, ayın günü alanındaki ‘5C’ değeri, ‘takvimin 5’inde veya sonrasında dahil ettiği ilk gün’ anlamına gelir. Haftanın günü alanındaki ‘1C’ değeri, ‘takvimde Pazar günü veya sonrasında yer alan ilk gün’ anlamına gelir. ‘C’ karakteri çok nadiren kullanılır ve hatta İlkbahar 5.3 iyileştirmelerinde yoktur. Ayrıca, Spring 5.3 tarafından sağlanan yeni CronExpression sınıfı, ‘java.util.Calendar’ API’lerini temel alan eski sürümlerdeki CronSequence sınıfının aksine ‘java.time’ API’lerini temel alır.
+Spring Tabanlı Bir Uygulamada Cron İfadesi Nerede Kullanılır?
+Cron ifadeleri çoğunlukla Spring uygulamalarında @Scheduled ek açıklaması aracılığıyla kullanılır. @Scheduled, zamanlanacak yöntemi işaretlemek için çalışma zamanında uygulanan yöntem düzeyinde bir ek açıklamadır. Çizelgeleme istediğimiz metodu sonlandırdıktan sonra üzerine cron özelliği ile @Scheduled annotation uyguluyoruz. Bu ‘cron’ niteliği, cron ifadesini kabul eder. Örneğin, aşağıdaki kod parçacığı, Spring Scheduling cron ifadesini @Scheduled ek açıklamasıyla kullanma kavramlarını gösterir.
+
+import java.time.LocalDateTime;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SchedulerService {
+
+@Scheduled(cron = “15 * * * * *”)
+public void scheduledMethod() {
+System.out.println(“Merhaba cron Zamanlayıcı Hizmeti: “ +LocalDateTime. şimdi () ) ;
+}
+}
+Spesifik olarak, yukarıdaki programdaki cron ifadesi, her dakika 15 saniyede bir görevin yürütülmesini gösterir.
+
+1) Yılda Bir Defa: “0 0 0 1 1 *” yerine @ yılda bir veya @yılda bir
+
+2) Ayda Bir: “0 0 0 1 * *” yerine @ayda bir
+
+3) Haftada Bir: “0 0 0 * * 0” yerine @haftada bir
+
+4) Günde Bir Kez: “0 0 0 * * *” yerine @daily veya @midnight
+
+5) Saatte Bir: “0 0 * * * *” yerine @saatte bir
+
+Son Günler (L)
+‘L’ karakteri son anlamına gelir. Bu karakteri ‘ayın günü’ ve ‘haftanın günü’ alanlarında kullanabilinir.
+
+Bazı Örnekler:
+
+Cron İfadesi Anlam
+0 0 0 L * * -> Ayın son günü gece yarısı
+
+0 0 0 L-2 * * -> Ayın sondan ikinci günü gece yarısı
+
+0 0 0 * * 4L -> Ayın son Perşembe gece yarısı
+
+0 0 0 * * MONL -> Ayın son Pazartesi gece yarısı
+
+hafta içi (K)
+‘W’ karakteri Hafta içi anlamına gelir.
+Bu karakteri ‘ayın günü’ alanında kullanabilinir.
+
+Örnek:
+Cron İfadesi Anlam
+0 0 0 1W * * -> Ayın ilk iş günü gece yarısı
+
+0 0 0 LW * * -> Ayın son hafta içi gece yarısı
+
+Ayda Haftanın Günü (#)
+‘#’ karakteri yalnızca ‘haftanın günü’ için geçerlidir.
+“Haftanın günü” alanı “d#n” veya “DDD#n” olabilir,
+bu “haftanın n. günü d veya aydaki DDD” anlamına gelir.
+
+Örnek:
+Cron İfadesi Anlam
+0 0 0 ? * 5#3 -> Ayın üçüncü cuma gece yarısı
+0 0 0 ? * SUN#1 -> Ayın ilk Pazar gece yarısı
+
+??? Sorular ve Cevaplar ???
+Ör#1) ŞUBAT ayında her Pazartesi 16:10'da ve 16:24'te tetiklenmesi gereken bir Cron ifadesi?
+
+Cevap. 0 10,24 16 ? ŞUBAT PZT veya 0 10,24 16 ? 2 1
+
+Ör#2) Her ayın üçüncü Cuma günü saat 8:30'da tetiklenmesi gereken bir Cron ifadesi?
+
+Cevap. 0 30 8 ? * CUM#3 mü yoksa 0 30 8 mi? * 5#3
+
+Ör#3) Her ayın 10. günü saat 22:15'te tetiklenmesi gereken bir Cron ifadesi?
+
+Cevap. 0 15 22 10 * ?
+
+Ör#4) Her 10 Ekim saat 10:10'da tetiklenmesi gereken bir Cron ifadesi yazın.
+
+Cevap. 0 10 10 10 10 ? veya 0 10 10 10 EKİM ?
+
+Ör#5) Ayın beşinci gününden başlayarak, her ay 10 günde bir saat 12:00'de (öğlen) tetiklenmesi gereken bir Cron ifadesi?
+
+Cevap. 0 0 12 5/10 * ?
+
+Ör#6) Her ayın son günü saat 17:15'te tetiklenmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 15 17 L * ?
+
+Ör#7) Ayın üçüncü iş günü sabah 9:00'da tetiklenmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 0 9 3W * *
+
+Ör#8) Ayın son Pazartesi günü gece yarısı tetiklenmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 0 0 * * 1L veya 0 0 0 * * MONL
+
+Ör#9) Ayın son iş günü sabah 9:59:59'da tetiklenmesi gereken bir Cron ifadesi ?
+
+Cevap. 59 59 9 LW * *
+
+Ör#10) Ayın sondan ikinci günü gece yarısı etkinleşmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 0 0 L-2 * *
+
+Ör#11) Her Yeni Yıl Günü başlangıcında etkinleşmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 0 0 1 1 ?
+
+Ör#12) Ayın son günü saat 18:00'de tetiklenmesi gereken bir Cron ifadesi ?
+
+Cevap. 0 0 18 L * *
