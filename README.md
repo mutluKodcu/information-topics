@@ -7,7 +7,7 @@ It contains information libraries of technologies used in the software developme
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/backend%20run%20install"> BackEnd Projesinin Çalıştırılması</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/spring%20_scheduled_task_management"> Spring ile Scheduled(Zamanlanmış) Task Yönetimi</a>
 
-SPRING CORE ile Altyapı Geliştirmek
+<b> Spring Core and Developing Infrastructure (Altyapı Geliştirmek)
 - Microservice nedir?
 - KAFKA nedir?
 - RabbitMQ nedir?
