@@ -229,7 +229,6 @@ Temel Git ve Github Bilgisi
 
 
 <h1> Road Maps (#frontend )</h1>
-------------------------
 
 - FrontEnd Bileşenleri
 - JAVASCIPT ve String Metodlar
