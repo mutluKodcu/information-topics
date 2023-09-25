@@ -75,7 +75,13 @@ Temel Git ve Github Bilgisi
 - Swagger
 - MapStruct
 - Lombok
-- <a href="https://github.com/mutluKodcu/information-topics/blob/main/liquibase"> Liquibase </a>
+- <a href="https://github.com/mutluKodcu/information-topics/blob/main/liquibase"><b> Liquibase </b></a>
+---------------------------------
+     * Liquibase Özellikleri
+     * Geliştirici için Süreçler
+     * PreCondition Çeşitleri — Contexts
+     * Hibernate Bağlantısı — Liquibase Operasyonları
+     * Roll-Back — Diff
 
 <b> Web Service </b> 
 -------------
