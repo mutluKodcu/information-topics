@@ -6,6 +6,82 @@ It contains information libraries of technologies used in the software developme
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/os_system%20install"> Sistem Kurulumları</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/backend%20run%20install"> BackEnd Projesinin Çalıştırılması</a>
 
+<b> Algoritma Yeteneği </b> 
+--------------
+- Problem çözme
+- Data Structers
+
+<b> OOP </b> 
+-------------
+- Encapsulation
+- Inheritence
+- Class ve Object İlişkisi
+- Abstraction
+- Polymorhism
+- Design Pattern
+- SOLID Prensipleri
+
+<b> Java </b> 
+------------
+- Java 17
+- FunctionInterface
+- Lambda Expressions
+- Stream API
+- Math
+- Reflect
+- Java Logging
+- Regex
+- Collections
+- Record
+- Thread
+
+<b> IDE </b> 
+------------
+- Intellij IDEA
+
+<b> Temel SQL Bilgisi </b> 
+-------------------
+- PostgreSQL
+
+<b> Maven </b> 
+--------------
+- POM, Dependies, Repositories kavram bilgileri
+
+<b> Git </b> 
+----------------
+Temel Git ve Github Bilgisi
+
+<b> Others </b> 
+-----------
+- Swagger
+- MapStruct
+- Lombok
+- Liquibase
+
+<b> Web Service </b> 
+-------------
+- Rest
+- SOAP
+- 
+<b> Spring Framework </b> 
+-----------------
+- Spring Core
+- Spring Boot
+- Spring Web
+- Spring Security
+— Spring Security JWT
+— Spring Security Oaut2
+- Spring AOP
+- Spring Session
+- Spring AQOP
+- Spring Web Service
+- Spring Data
+— Spring Data JPA
+— Spring Data Redis
+- Spring ORM
+— Hibernate JPA ModelGen
+— Hibernate
+
 <b> Spring-Core and Developing Infrastructure (Altyapı Geliştirmek) </b>
 - Microservice nedir?
 - KAFKA nedir?
@@ -86,3 +162,7 @@ It contains information libraries of technologies used in the software developme
 -----------------------------------------
 - REST (Respresentational State Transfer — Temsili Durum Aktarımı)
 - REST ve SOAP Arasındaki Farklar
+
+
+
+
