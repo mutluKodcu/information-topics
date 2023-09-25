@@ -171,7 +171,6 @@ Temel Git ve Github Bilgisi
 - Zookeper ve Rolleri
 - Controller Seçimi, Topic Konfigürasyonlar, Kotalar
 - <b>RabbitMQ / Mesaj Yönetimi </b>
-------------------------------------------
     - RabbitMQ nedir? Çalışma Şekli..
     - RabbitMQ ve Bileşenleri
     - Mail Microservice
