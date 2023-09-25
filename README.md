@@ -75,7 +75,7 @@ Temel Git ve Github Bilgisi
 - Swagger
 - MapStruct
 - Lombok
-- Liquibase
+- <a href="https://github.com/mutluKodcu/information-topics/blob/main/liquibase"> Liquibase </a>
 
 <b> Web Service </b> 
 -------------
