@@ -72,11 +72,17 @@ It contains information libraries of technologies used in the software developme
 - Choreograph Yönetimi
 - Command/Orchestration Implemantasyon
 
-<a href=""> Service Oriented Architecture (Servis Odaklı/ Yönelimli Mimari) - SOA, SOLID Prensipleri</a>
+<b> Service Oriented Architecture (Servis Odaklı/ Yönelimli Mimari)</b>
 -----------------------------------------
 
-<a href=""> SOAP, RESTFull Servisler</a>
+<b>SOLID Prensipleri</b>
+-----------------------------------------
+
+<b> SOAP</b>
 -----------------------------------------
 - SOAP (Simple Object Access Protocol — Basit Nesne Erişim Protokolü)
+
+<b> RESTFull Servisler</b>
+-----------------------------------------
 - REST (Respresentational State Transfer — Temsili Durum Aktarımı)
 - REST ve SOAP Arasındaki Farklar
