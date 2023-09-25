@@ -5,7 +5,6 @@ It contains information libraries of technologies used in the software developme
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/frontend%20install"> Frontend Kurulum</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/os_system%20install"> Sistem Kurulumları</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/backend%20run%20install"> BackEnd Projesinin Çalıştırılması</a>
-- <a href="https://github.com/mutluKodcu/information-topics/blob/main/spring%20_scheduled_task_management"> Spring ile Scheduled(Zamanlanmış) Task Yönetimi</a>
 
 <b> Spring-Core and Developing Infrastructure (Altyapı Geliştirmek) </b>
 - Microservice nedir?
@@ -52,6 +51,7 @@ It contains information libraries of technologies used in the software developme
 - Spring REST ( Service — Repository)
 - Spring REST Mimarisi
 - Transaction Management
+- <a href="https://github.com/mutluKodcu/information-topics/blob/main/spring%20_scheduled_task_management"> Spring ile Scheduled(Zamanlanmış) Task Yönetimi</a>
 
 <b><a href="">KAFKA Terminolojisi ve Mimarisi</a></b>
 ---------------------
@@ -71,3 +71,12 @@ It contains information libraries of technologies used in the software developme
 - Choreograph Implemantasyonu — Event/Choreograph Implemantasyonu
 - Choreograph Yönetimi
 - Command/Orchestration Implemantasyon
+
+<a href=""> Service Oriented Architecture (Servis Odaklı/ Yönelimli Mimari) - SOA, SOLID Prensipleri</a>
+-----------------------------------------
+
+<a href=""> SOAP, RESTFull Servisler</a>
+-----------------------------------------
+- SOAP (Simple Object Access Protocol — Basit Nesne Erişim Protokolü)
+- REST (Respresentational State Transfer — Temsili Durum Aktarımı)
+- REST ve SOAP Arasındaki Farklar
