@@ -45,7 +45,7 @@ It contains information libraries of technologies used in the software developme
 - Java 17
 - FunctionInterface
 - Lambda Expressions
-- Stream API
+- <a href="https://github.com/mutluKodcu/information-topics/blob/main/stream%20api">Stream API</a>
 - Math
 - Reflect
 - Java Logging
