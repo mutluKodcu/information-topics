@@ -1,0 +1,241 @@
+A. BEHAVIOR
+
+B. ARCHITECTURE
+— — — — — — — — — — — — — —
+Eisenhower Matrisinde yapılması gereken işler dört gruba ayrılıyor:
+- Acil ve önemli (IMPORTANT URGENT)
+- Acil ve önemli değil (IMPORTANT NOT URGENT)
+- Acil değil ve önemli (UNIMPORTANT URGENT)
+- Acil değil ve önemli değil (UNIMPORTANT NOT URGENT)
+
+Newton Hareket Yasası : F = m.a
+Evrensel Kütle Çekim Yasası: F = G .m1.m2 / r2
+
+Structured Programming
+— — — — — — — — — —
+— if/then/else
+— do/while/until
+
+— OOP (Object Oriented Programming)
+— — — — — — — — — — — — — — — —
+— Constructor
+— Inheritance
+— Instance variable
+— Encapsulation
+— Polymorphism
+— Dependency Inversion
+
+— Functional Programming
+— — — — — — — — — — — —
+— Immutability and Architecture (Değişmezlik Ve Mimari)
+— Segregation of Mutablity
+
+— Design Principles ( S O L I D )
+— — — — — — — — — — — — — —
+— SRP (The Single Responsibility Principle) : Bir sınıfı değiştirmek için tek bir sorumluluğu olmalıdır.
+( * The Facade Pattern )
+— OCP (The Open-Closed Principle) : Bir sınıf davranışlarını değiştirmeden genişletilebilinir.
+(
+<I> interface
+<DS> Data Structure
+Open arrowheads -> using relations
+Closed arrowheads ->implements or interface
+Etkileşim:
+View -> Presenter -> Controller -> Interactor
+Database -> Interactor
+)
+— LSP (The Liskov Substitution Principle) : Türetilmiş sınıflar, temel sınıfları için yerine konulabilinir olmalıdır.
+— ISP (The Interface Segregation Principle) : Sayfaya özel arayüzler yapılmalıdır.
+— DIP (The Dependency Inversion Principle) : Soyutlamalara bağlıdır, sonutlaştırmalara değil,
+(
+Abstract Factory
+)
+
+— Component Principle
+— — — — — — — — — — —
+— Component Cohesion :
+— REP : The Release Equivalence Principle (Serbest Bırakma Prensibi)
+— CCP : The Common Closure Principle (Ortak Kapanış Prensibi)
+— CRP : The Common Reuse Principle (Ortak Yeniden Kullanım Prensibi)
+** The Tension Diagram for Component Cohesion
+( Bileşiklerin Uyumu için Gerilim Diyagramı)
+
+— Component Coupling (ADP — Döngüsel Olmayan Bağımlılık İlkesi)
+— The Effect of a cycle in the Component Dependency Graph
+(Bileşen Bağımlılık Grafiğinde bir Döngünün Etkisi)
+— Breaking the Cycle (Döngüyü Kırmak)
+— Top-Down Design
+— The Stable Dependency Principle (SDP — Kararlı Bağımlılık İlkesi)
+— The Stable Abstractions Principle
+
+== ARCHITECTURE ==
+— High-level
+— Structure
+— Layers
+— Components
+— Relationships
+
+— Domain-centric Architecture (Domain Merkezli Mimari)
+— Three-layer database centric Architecture
+Types of Domain-Centric Architecture :
+1 — Hexagonal Architecture
+2 — Onion Architecture
+3 — The Clean Architecture
+— BCE Architecture Design(Boundary Control Entity)
+— Application Layer
+— Dependency Inversion Principle
+
+— Layers ?
+— — Levels of abstraction (Soyutlama Seviyeleri)
+— — Single Responsibility (Tek Sorumluluk)
+— — Isolate roles and skills (Roller ve Yetkiler izole edilmesi)
+— — Multiple implementations (Çoklu Uygulamalar)
+— — Varying rates of change (Değişen ve Değişim Oranları)
+
+— Layer Dependencies
+— Dependency inversion
+— inversion of control
+— Independent deployability
+— Flexible and maintainable
+
+— Command and Queries (Komut Sorguları)
+— CQRS Architecture
+— Single-database CQRS
+— Two Database CQRS
+— Event Sourcing CQRS
+— — Complete audit trail (Denetim izninin olması)
+— — Point-in-time reconstruction (Durumun Yeniden Yapılandırılması)
+— — Replay Events(Olayları Tekrar Etme) — Yük testi ve Resresyon Testi için çok faydalıdır.
+— — Multiple Read Database
+
+— — Rebuid Production Database
+
+Why use CQRS?
+* Domain Center Design
+* More Efficient Design
+* Optimized Performance (Performans Optimisazyonu sağlar)
+* Event Sourcing Benefits
+
+— Functional Organization
+— Screamin Architecture
+— Functional Categorical
+— — content
+
+
+— Independent
+— Use cases
+— Operation
+— Develpoment
+— Deployment
+— Leaving Options Open
+— Decoupling Layers
+— Decoupling Use Cases
+— Decoupling Mode
+— Independent Develop-Ability
+— Independent Deployability
+— Duplication
+— Decoupling Modes (Again)
+— — Source level
+— — Deployment level
+— — Service level
+
+Functional Organization
+— Content
+— Controllers
+— Models
+— Scripts
+— Views
+
+MVC (Model — View — Controller)
+1.layer -> Persistance ve Infrastructure : Altyapı (Common : Date Service, Security) ve sınıfları içeren katman
+2.layer -> Domain : Entities (Varlıkları) içeren katman
+3.layer -> Application : Kullanım Durumlarını içeren katman (Service)
+4.layer -> Presentation : Kullanıcı Arayüzünü içeren sunum katmanı (Controller)
+
+— Birbiri ile ilgili olan kısımlar alanlar aynı klasör içerisinde bulunarak daha kolay bulunur.
+
+Microservices
+— Components
+— — UI
+— — Business
+— — Data Access
+
+— Bounded Context
+— Cohesion / Coupling
+— Single Domain of knowledge
+— Consistent data model
+— Independence
+
+Testable Architecture
+— Test Driven Development (Test Odaklı Geliştirme)
+— Test AUTOMATİON Ğyramid
+
+— Test Driven Development (Test Odaklı Geliştirme)
+— — Red
+— — Green
+— — Refactor
+RED ADIMI:
+1. Create a failling test : En basit işlevsellik parçası için başarısız bir test oluşturarak başlanır.
+GREEN ADIMI:
+2. Get the test to pass : Başarızı adımı geçebilmesi için yeterli production kodunu uygulanır.
+REFACTOR ADIMI:
+3. Improve the code : Kaliteyi yüksek tutmak için hem test hemde üretim kodunu geliştirilir.
+Her bir işlev parçacığı için bu döngü işletilir ve tüm özellikler tamamlanana kadar
+her bir yöntem ve sınıfta artan karmaşıklık sırasına göre tekrarlanır.
+Comprehensive Suite of Tests: Tüm döngüleri kapsayan Kapsamlı Test Paketi oluşturulur.
+Drive Testable Design: TDD kullanarak bu sınıfların her birinin tasarımı ve yöntemleri
+test süreci tarafından yönlendirilmektedir. Varsayılan olarak kolayca test edilebileceği anlamına gelir.
+More maintable : Sürdürülebilirlik ile Birleşme ve Birleştirme yöntemleri daha tutarlı hale getirir.
+Eliminates Fear: Kodda değişiklik yapmanın Regresyon hatalarına neden olacağı korkusu,
+Mimarideki değişim korkusunu ortadan kaldırır.
+Test Türleri:
+? Neyi Test ettiklerini temel alır?
+- Unit Tests : Birim Testi
+- Integration Tests : Entegrasyon Testi
+- Component Tests : Bileşen Testi
+- Service Tests : Servis Testi
+- UI Tests : Arayüz Testi
+
+? Neden Test edildiğine dayanmaktadır ?
+- Functional Tests
+- Acceptance Tests : Kabul Testleri
+- Smoke Tests: Duman Testi
+- Exploratory Tests: Keşif Testi
+
+? Nasıl Test edildiğine bakılır ?
+- Automated Tests : Otomatik Test
+- Semi automated Tests: Yarı Otomatik Test
+- Manual Tests: Manuel Test
+
+Test Automation Pyramid
+
+1. Unit Tests : İşlevsellik kontrolü yapılır.
+2. Service Tests : Kullanıcılara hizmet sağlayan sınıf ve yöntemin işlevselliğini doğrulayan test sürecidir.
+3. UI tests: Kullanıcılardan veritabanına kadar işlevsellik kontrol yapılır.
+4. Manuel Tests: Tam doğrudan kullanıcılar tarafından yapılan testir.
+
+Cost : 4 > 3 > 2 > 1 → Piramidin üzerindeki diğer testler daha maliyetlidir.
+
+Unit test hızlı koşar ve kolaydır, diğer test türlerine göre daha az maliyetlidir.
+UI testler zor ve zaman alıcıdır, çok daha yavaş ve kırılgandırlar.
+
+— — Acceptance Tests için doğrudan Application katmanındaki komutlar ve sorgular ile yapılır.
+
+— — Veritabanı kabul testlerini ayrı bir test içi veritabanı ile çözerek yapılır.
+— — Bağımlılıklar için Mock service kullanılır.
+— — İşlevsel olmayan güvenlik gereksinimlerini ve denetim gereksinimlerini doğrulamak gibi istisna testler yapılabilinir.
+— — İşlevsel testler neyin gerekli olduğuna odaklanır. Yani Logic, Domain ve — — Application katmanındaki kullanım durumları,
+— — Veritabanları, işlemtim sistemleri, 3.taraf bağımlılıklar
+
+Uygulamada kodlanmış UI testlerinin sayısını minimalize edilmesi gerekir.
+Bu yüzden kabul testlerinde UI tests yerine Smoke testleri yapılarak revize edilebilinir.
+Smoke Testleri; uygulamanın gerçekte çalıştığını doğrulayan çok az sayıda basit, tam sistem testidir.
+Tüm parçalar çalışma zamanında birleştirilir. Çok sayıda maliyetli ve karmaşık kodlanmış UI kabul testlerinin
+oluşturulması ve sürdürülmesi maliyetini azaltır, ayrıca manuel testlerin en aza indirilmesini sağlar.
+Derece kaliteli bir kullanıcı deneyimi sağlayarak keşif amaçlı testler yaparak değerli test süreçleri
+üretmek için test sahipleri serbest bırakılıyor. Demo uygulamalarda bu çalışmalar gerçekleştirilir.
+! Geliştiriciler TDD teşvik edilmeli
+!! Test edilebilinir bir mamari altyapı oluşturulmalı, mamarinin tasarımı buna göre geliştirilmelidir.
+!!! Sürdürüle bilinir şekilde kod ile paralel olmalıdır.
+Bu yüzden kapsamlı bir test paketi oluşturuyoruz. Böylece kodumuzdaki yaptığımız değişikliklerin kodu bozacağı korkusunu ortadan kaldırıyoruz.
+Kodumuzu geliştirmek için sürekli olarak yeniden düzenleriz ve mimarimizi temiz tutarız.
