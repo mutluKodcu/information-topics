@@ -6,7 +6,7 @@ It contains information libraries of technologies used in the software developme
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/os_system%20install"> Sistem Kurulumları</a>
 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/backend%20run%20install"> BackEnd Projesinin Çalıştırılması</a>
 
-<h1><font color="red"> Road Maps (#backend )</font></h1>
+<h1> Road Maps (#backend )</h1>
 
 <b> Algoritma Yeteneği </b> 
 --------------
@@ -165,6 +165,43 @@ Temel Git ve Github Bilgisi
 - REST (Respresentational State Transfer — Temsili Durum Aktarımı)
 - REST ve SOAP Arasındaki Farklar
 
+
+<h1> Road Maps (#frontend )</h1>
+
+- FrontEnd Bileşenleri
+- JAVASCIPT ve String Metodlar
+- Array ait Metodlar
+- Dates Metodlar
+- Conditions ve While & Do/While Loop
+- Comporisons, For Loop, Reversed ve Timing
+- Selectors ve ES6 ait Özellikler
+- Arrow Functions ve Template Literals
+- NODE.JS ve Paket Yönetici Sistemleri (npm)
+- AJAX ve SPA Lifecycle
+- REACTJS ve Dosya Yapısı (package.json)
+- ReactDOM.render ve JSX
+- React Components ve Live Reloading & Hot Reloading
+- Import & Export ve Functional Component
+- Props ve State
+- PropsTypes & defaultProps
+- State Hook — useState()
+- Component Lifecycle -Creation ve React Component Lifecycle
+- Event Handling — Effect Hook — useEffect()
+- Data Binding
+- Controlled Components — UnControlled Components
+- JSX List Rendering — Styles & Class (CSS Style Sheet)
+- React State Yönetimi — Context API
+- Context — Provider
+- Redux & React-Redux
+- App.js
+- REST API & AJAX & Promise
+- GET / POST İşlemleri — React Routing
+- Eject — Dependency Management
+- Custom Environment Variable Ekleme — Config.js
+- Backend Proxy — Backend Entegrasyonu
+- MicroFrontend — Production Build
+- MicroFrontend Entegrasyonu
+- 
 
 
 
