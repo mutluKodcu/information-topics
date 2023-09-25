@@ -1,0 +1,14 @@
+Git Lab Kurulumu
+-------------------
+- Windows için Gitlab kurulum
+Git Gui -> Show SSH key oluşturulması
+ -- profile/keys adresine oluşturulan SSH Keys Copy/Past yapılması ve Kaydedilmesi
+TortoiseGit-2.8.0.0-64bit yüklenmesi
+C:\ dizini altına boş bir klasör oluşturuluyıor
+Bu dizin altına projenin sağ tuş Git Clone seçilerek
+backend projesi için url: git@git.mutlukodcu.gov.tr:yazilim/aabbcc-backend.git
+
+frontend projesi için url: git@git.mutlukodcu.gov.tr:yazilim/aabbcc-frontend.git yada
+cmd satırından :
+
+git clone git@git.mutlukodcu.gov.tr:yazilim/aabbcc-frontend.git
