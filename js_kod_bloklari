@@ -239,3 +239,25 @@ if (yeniTC != userName.substring(10, 11)) {
     }
 
 ----------------------------------
+// Tarih ve Bilesenleri
+export default Controller.extend({
+  tarihAtama: '1979-12-31'
+  tarihMask: "\"inputFormat\": \"dd/mm/yyyy\"",
+  tarihSaatMask: "\"inputFormat\": \"dd.mm.yyyy HH:MM:ss\"",
+  ayYilMask: "\"inputFormat\": \"mm/yyyy\"",
+  zamanMask: "\"inputFormat\": \"HH:MM\"" 
+});
+// momentjs: https://momentjs.com/
+moment.locale();         // en
+moment().format('LT');   // 5:02 PM
+moment().format('LTS');  // 5:02:39 PM
+moment().format('L');    // 02/16/2022
+moment().format('l');    // 2/16/2022
+moment().format('LL');   // February 16, 2022
+moment().format('ll');   // Feb 16, 2022
+moment().format('LLL');  // February 16, 2022 5:02 PM
+moment().format('lll');  // Feb 16, 2022 5:02 PM
+moment().format('LLLL'); // Wednesday, February 16, 2022 5:02 PM
+moment().format('llll');
+
+
