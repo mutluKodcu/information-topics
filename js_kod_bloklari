@@ -1,0 +1,43 @@
+/* ORNEK KOD BLOKLARI */
+// Sayfa yenileme
+<button type="button" onClick="window.location.reload()">
+   Sayfayı yenile
+</button>
+---------------------------------------------------------
+<input type="textbox" class="tcknoRegex" placeholder="T.C. Kimlik No giriniz." name= "userName" id="tckn">
+// sadece sayi girisi
+ <script type="text/javascript">
+$(".tcknoRegex").keyup(function (){
+  if (this.value.match(/[^0-9]/g)){
+    this.value = this.value.replace(/[^0-9]/g,'');
+  }
+});
+-----------------------------------------------------
+// sadece harf girisi
+$(".harfInput").keyup(function (){
+if (this.value.match(/[^a-zA-Z]/g)){
+    this.value = this.value.replace(/[^a-zA-Z]/g,'');
+  }
+});
+</script>
+---------------------------------------------------
+// kimlik Kontrol
+var tckontrol, toplam;
+tckontrol = userName;
+toplam = Number(userName.substring(0, 1))
+    + Number(userName.substring(1, 2))
+    + Number(userName.substring(2, 3))
+    + Number(userName.substring(3, 4))
+    + Number(userName.substring(4, 5))
+    + Number(userName.substring(5, 6))
+    + Number(userName.substring(6, 7))
+    + Number(userName.substring(7, 8))
+    + Number(userName.substring(8, 9))
+    + Number(userName.substring(9, 10));
+strtoplam = String(toplam);
+
+yeniTC = strtoplam.substring(strtoplam.length, strtoplam.length - 1);
+if (yeniTC != userName.substring(10, 11)) {
+  alert("T.C. Kimlik Numarası yanlış! Lütfen tekrar giriniz.");
+}
+--------------------------------------------------
