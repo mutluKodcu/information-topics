@@ -41,3 +41,201 @@ if (yeniTC != userName.substring(10, 11)) {
   alert("T.C. Kimlik Numarası yanlış! Lütfen tekrar giriniz.");
 }
 --------------------------------------------------
+// data table
+ <table
+  id="abc-table"
+  class="table table-bordered table-striped table-condensed"
+  style="max-width:60%;font-size: 12px;line-height: 1.0; border:#fff; padding-left: 5px;margin-left: 5px;"
+>
+<thead class="bg-maliye text-white">
+  <tr>
+	<th style="text-align: center;">
+	  No
+	</th>
+	  Ad
+	<th style="text-align: center;">
+	  Yer
+	</th>
+	<th style="text-align: center;">
+	  İşlemler
+	</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each defter.defterTurleri as |kayit|}}
+	<tr style="text-align: center;">
+	  <td>
+		{{kayit.No}}
+	  </td>
+	  {{#if (eq kayit.defterType.value "AABBCC")}}
+	  <td>
+		{{kayit.ad}}
+	  </td>
+	  <td>
+		<button class="btn-xs btn-danger" {{action "turSil" kayit}}>
+		  Sil
+		</button>
+	  </td>
+	</tr>
+  {{/each}}
+</tbody>
+</table>
+<div class="pagination-container" style="margin-left: 400px;display:inline-table">
+	<nav style="padding-right: 540px;">
+		<ul class="pagination">
+			<li data-page="prev">
+				<span>Önceki<b><font color="red"><span class="sr-only">(current)</span></font></b></span>
+			</li>
+			<li data-page="next" id="prev">
+				<span>Sonraki<span class="sr-only">(current)</span></span>
+			</li>
+			<select
+					class="form-control"
+					name="state"
+					id="maxRows"
+					style="margin-left: 2px;display:inline-table">
+				<option value="5">
+					5
+				</option>
+				<option value="10">
+					10
+				</option>
+				<option value="20">
+					20
+				</option>
+			</select>
+		</ul>
+	</nav>
+</div>
+--------------------- js ----------------------
+<script>
+    getPagination('#abc-table');
+    function getPagination(table) {
+        var lastPage = 1;
+        $('#maxRows')
+                .on('change', function (evt) {
+                    lastPage = 1;
+                    $('.pagination')
+                            .find('li')
+                            .slice(1, -1)
+                            .remove();
+                    var trnum = 0;
+                    var maxRows = parseInt($(this).val());
+
+                    if (maxRows == 5000) {
+                        $('.pagination').hide();
+                    } else {
+                        $('.pagination').show();
+                    }
+                    var totalRows = $(table + ' tbody tr').length;
+                    $(table + ' tr:gt(0)').each(function () {
+                        trnum++;
+                        if (trnum > maxRows) {
+                            $(this).hide();
+                        }
+                        if (trnum <= maxRows) {
+                            $(this).show();
+                        }
+                    });
+                    if (totalRows > maxRows) {
+                        var pagenum = Math.ceil(totalRows / maxRows);
+                        for (var i = 1; i <= pagenum;) {
+                            $('.pagination #prev')
+                                    .before(
+                                            '<li data-page="' +
+                                            i +
+                                            '">\
+                                              <span>' +
+                                            i++ +
+                                            '<span class="sr-only">(current)</span></span>\
+                                            </li>'
+                                    )
+                                    .show();
+                        }
+                    }
+                    $('.pagination [data-page="1"]').addClass('active');
+                    $('.pagination li').on('click', function (evt) {
+                        // on click each page
+                        evt.stopImmediatePropagation();
+                        evt.preventDefault();
+                        var pageNum = $(this).attr('data-page');
+                        var maxRows = parseInt($('#maxRows').val());
+
+                        if (pageNum == 'prev') {
+                            if (lastPage == 1) {
+                                return;
+                            }
+                            pageNum = --lastPage;
+                        }
+                        if (pageNum == 'next') {
+                            if (lastPage == $('.pagination li').length - 2) {
+                                return;
+                            }
+                            pageNum = ++lastPage;
+                        }
+                        lastPage = pageNum;
+                        var trIndex = 0;
+                        $('.pagination li').removeClass('active');
+                        $('.pagination [data-page="' + lastPage + '"]').addClass('active');
+                        limitPagging();
+                        $(table + ' tr:gt(0)').each(function () {
+                            trIndex++;
+                            if (
+                                    trIndex > maxRows * pageNum ||
+                                    trIndex <= maxRows * pageNum - maxRows
+                            ) {
+                                $(this).hide();
+                            } else {
+                                $(this).show();
+                            }
+                        });
+                    });
+                    limitPagging();
+                })
+                .val(10)
+                .change();
+    }
+
+    function limitPagging() {
+        if ($('.pagination li').length > 7) {
+            if ($('.pagination li.active').attr('data-page') <= 3) {
+                $('.pagination li:gt(5)').hide();
+                $('.pagination li:lt(5)').show();
+                $('.pagination [data-page="next"]').show();
+            }
+            if ($('.pagination li.active').attr('data-page') > 3) {
+                $('.pagination li:gt(0)').hide();
+                $('.pagination [data-page="next"]').show();
+                for (let i = (parseInt($('.pagination li.active').attr('data-page')) - 2); i <= (parseInt($('.pagination li.active').attr('data-page')) + 2); i++) {
+                    $('.pagination [data-page="' + i + '"]').show();
+                }
+            }
+        }
+    }
+</script>
+---------------------- CSS --------------
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337AB7;
+    text-decoration: none;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    }
+   .pagination>.active>a, 
+   .pagination>.active>a:focus, 
+   .pagination>.active>a:hover, 
+   .pagination>.active>span, 
+   .pagination>.active>span:focus, 
+   .pagination>.active>span:hover {
+    z-index: 3;
+    color: #FFF;
+    cursor: default;
+    background-color: #337AB7;
+    border-color: #337AB7;
+    }
+
+----------------------------------
