@@ -1,0 +1,70 @@
+Multiple Node Versions
+--------------------------
+Node Version Manager (NVM), Node.js projelerinde sürüm yönetimi ve geçiş kolaylığı sağlayan güçlü bir araçtır. 
+NVM’i kullanarak farklı Node.js sürümlerini yönetebilir, projelerin ihtiyaçlarına uygun sürümleri belirleyebilir
+ve geliştirme süreci saglanir.
+
+- nvm yüklenmesi 
+ -- Link : https://github.com/coreybutler/nvm-windows/releases 
+    assets: nvm-setup.exe
+dosyası indirilir. İlgili .exe yonetici olarak calistirilir.
+Dizine gidilir:
+C:\Users\mutlukodcu>nvm -v
+	> 1.1.11
+Mevcut node version kontrol edilir
+C:\Users\mutlukodcu>node -v
+	> v18.18.0
+
+C:\Users\mutlukodcu>nvm install 14.17.0
+Downloading node.js version 14.17.0 (64-bit)...
+Complete
+Creating C:\Users\mutlukodcu\AppData\Roaming\nvm\temp
+
+Downloading npm version 6.14.13... Complete
+Installing npm v6.14.13...
+
+Installation complete. If you want to use this version, type
+	> nvm use 14.17.0
+
+C:\Users\mutlukodcu>nvm use 14.17.0
+Now using node v14.17.0 (64-bit)
+
+C:\Users\mutlukodcu>nvm list    
+    18.18.0
+  * 14.17.0 (Currently using 64-bit executable)
+  
+- Farkli bir node version eklenmek istenildiginde
+
+C:\Users\mutlukodcu>nvm install 10.23.1
+
+Downloading node.js version 10.23.1 (64-bit)...
+Complete
+Creating C:\Users\mutlukodcu\AppData\Roaming\nvm\temp
+
+Downloading npm version 6.14.10... Complete
+Installing npm v6.14.10...
+
+Installation complete. If you want to use this version, type
+
+nvm use 10.23.1
+
+C:\Users\mutlukodcu>nvm list
+    18.18.0
+  * 14.17.0 (Currently using 64-bit executable)
+    10.23.1
+
+C:\Users\mutlukodcu> nvm ls-remote
+//  NVM ile yüklenebilecek Node.js sürümleri listelenir 
+
+C:\Users\mutlukodcu> nvm install <sürüm>
+// node.js v14.x.x surumlerini yuklemek icin nvm install 14 komutunu kullanilabilinir
+
+C:\Users\mutlukodcu>node -v
+> 10.23.1  // project 1 icin kullanilan node Version
+
+// Farkli bir proje node surum gecisi icin
+> nvm use 18.18.0
+ Now using node v18.18.0 (64-bit) // gecis saglandi
+
+>node -v
+ v18.18.0
