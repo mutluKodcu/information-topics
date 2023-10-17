@@ -1,0 +1,59 @@
+Spring Microservices'i OAuth 2.0 ile Entegre Edilmesi
+_______________________________________________________
+Spring Boot : Kurulum, Otomatik Yapılandırma, Bağımsızlık sağlar. 
+Spring Cloud: Dağıtık sistemler için ekosistem (Spring Cloud Config, Eureka, Zuul Hystrix)
+
+* OAuth 2.0 üçüncü taraf uygulamaların bir HTTP services kullanıcı kaynaklarına sınırlı erişimine izin veren bir authorization framework'dir.
+* OAuth 2.0 bileşenleri: Resource Owner, Client, Resource Server, Authorization Server
+Spring Microservices ile OAuth 2.0 Bütünleştirilmesi
+* Spring Boot : Microservices oluşturmak için kullanılır.
+* Spring Security : Güvenlik yapılandırılmasını sağlar.
+* Spring Security OAuth2 : Spring Security'nin OAuth 2.0 destekleyen yapılarını içerir.
+* Spring Cloud Security : Microservices güvenliğinin sağlanmasında yardımcı olur.
+Kullandığımız derleme aracına bağlı olarak pom.xml dosyamıza gerekli bağımlılıkları eklenir.
+<dependency>
+  <groupId>org.springframework.security</groupId>
+ <artifactId>spring-security-core</artifactId>
+ <version>5.3.3.RELEASE</version>
+</dependency>
+Bir çok API services için configure edilebilecek yetkilendirme-kimlik doğrulama işlemleri yapabiliriz.
+
+@Configuration
+@EnableWebSecurity
+public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+ @Override
+ protected void configure(HttpSecurity http) throws Exception {
+ …
+ }
+ @Override
+ public void configure(WebSecurity web) throws Exception { 
+ …
+}
+
+Registering Clients : Client ID, Client Secret, Authorized Grant Types, Scopes
+Token: In-Memory, JDBC, JWT
+
+Token Sona Ermesi ve Tokenları Yenileme İşlemleri
+- Access tokens sınırlı bir ömrü vardır süresi dolduğunda kullanılamazlar. 
+Ancak refresh tokens ile resource owner yeniden kimlik doğrulaması (Authorization Server) yapmasına gerek kalmadan yeni bir Access tokens oluşturulabilir. 
+Yetkilendirme Sunucunuzun yenileme belirteçlerini sağlayacak ve işleyecek şekilde ayarlandığından emin olun.
+Securing Microservice-to-Microservice Communication
+
+* Microservice mimarilerin sıklıkla iletişim kurmaları gerekir.
+------------------           ------------------ 
+| Microservice A | - - - - → | Microservice B | 
+------------------           ------------------
+Microservice A, Microservice B'den veriye ihtiyaç duyduğunda;
+- Microservice A, yetkilendirme sunucusu (Authorization Server) ile doğrudan doğrudan kimlik doğrulaması yaptığı ve Microservice B'ye erişebilmek için client credentials bilgilerini kullanır.
+Spring Microservice OAuth 2.0 ile entegre ederek aslında her servisin ve servisin iletişim kanallarınında güvenli olması sağlanmış olunur.
+
+* Yetki Kodu (Authorization Code) : server-side applications için kullanılır.
+* Örtülü (Implicit): single-page apps gibi client-side applications için kullanılır.
+* Şifre (Password): Useful for highly trusted applications
+* İstemci Kimlik Bilgileri (Client Credentials): erver-to-server communications için kullanılır.
+ 
+* JWT, iki taraf arasında aktarılacak talepleri temsil eden kompakt, URL açısından güvenli bir araçtır.
+
+- Microservices Tokens Validasyonu : Herbir microservice aldığı tokenı doğrulamalıdır.
+- Limit Token Scope: Yalnızca bir uygulamanın ihtiyaç duyduğu izinler verilmelidir. 
+- Uygulamanın yalnızca verileri okuması gerekiyorsa, ona yazma izinleri verilmemelidir.
