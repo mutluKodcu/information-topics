@@ -108,7 +108,7 @@ Temel Git ve Github Bilgisi
 - Spring Web
 - Spring Security
 — Spring Security JWT
-— Spring Security Oaut2
+— Spring Security Oaut2 - <a href="https://github.com/mutluKodcu/information-topics/blob/main/spring-microservicesi-oauth-2-0">Spring Security Oaut2</a>
 - Spring AOP
 - Spring Session
 - Spring AQOP
