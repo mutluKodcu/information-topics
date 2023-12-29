@@ -234,7 +234,7 @@ Temel Git ve Github Bilgisi
 
 <b>Oracle Certified Java Developer 17 Exam, Java SE , Java Programming</b>
 -----------------------
-1. Chapter : <a href="https://github.com/mutluKodcu/information-topics/blob/main/ocp_certified_java_17">Building Blocks</a>
+1. Chapter : <a href="https://github.com/mutluKodcu/information-topics/wiki/Oracle-Certified-Java-Developer-17-Exam,-Java-SE-,-Java-Programming">Building Blocks</a>
 
 <h1> Road Maps (#frontend )</h1>
 
