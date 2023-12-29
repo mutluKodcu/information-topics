@@ -232,6 +232,9 @@ Temel Git ve Github Bilgisi
     - Komut (Command) Tasarım Şablonları
     - Aracı (Mediator) Tasarım Şablonları
 
+<b>Oracle Certified Java Developer 17 Exam, Java SE , Java Programming</b>
+-----------------------
+1. Chapter : <a href="https://github.com/mutluKodcu/information-topics/blob/main/saga%20pattern">Building Blocks</a>
 
 <h1> Road Maps (#frontend )</h1>
 
